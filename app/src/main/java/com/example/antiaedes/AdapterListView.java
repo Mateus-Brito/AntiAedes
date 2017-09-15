@@ -9,13 +9,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.antiaedes.dao.DenunciaDao;
+import com.example.antiaedes.entities.Denuncia;
+
 import java.util.ArrayList;
+
+import static android.R.attr.id;
 
 public class AdapterListView extends BaseAdapter
 {
     private LayoutInflater mInflater;
     private ArrayList<ItemListView> itens;
-    private int[] colors = new int[] { Color.parseColor("#FFFFFF"), Color.parseColor("#FFD700") };
+    private int[] colors = new int[] { Color.parseColor("#FFFFFF"), Color.parseColor("#00E676") };
 
     public AdapterListView(Context context, ArrayList<ItemListView> itens)
     {
@@ -56,6 +61,7 @@ public class AdapterListView extends BaseAdapter
         return position;
     }
 
+    @Override
     public View getView(int position, View view, ViewGroup parent)
     {
         //Pega o item de acordo com a posção.
@@ -65,7 +71,9 @@ public class AdapterListView extends BaseAdapter
 
         //atravez do layout pego pelo LayoutInflater, pegamos cada id relacionado
         //ao item e definimos as informações.
-        if(item.isPrioridade())
+
+
+        if(isResolved(itens.get(position).getId()))
             view.setBackgroundColor(colors[1]);
         else
             view.setBackgroundColor(colors[0]);
@@ -73,5 +81,14 @@ public class AdapterListView extends BaseAdapter
         ((ImageView) view.findViewById(R.id.imagemview)).setImageDrawable(item.getIconeRid());
 
         return view;
+    }
+
+    public boolean isResolved(int id){
+        DenunciaDao dd = new DenunciaDao();
+        for(Denuncia d : dd.getAllDenunciationsActives()){
+            if(d.getId()==id)
+                return false;
+        }
+        return true;
     }
 }

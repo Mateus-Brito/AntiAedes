@@ -1,5 +1,6 @@
 package com.example.antiaedes;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import com.example.antiaedes.entities.Denuncia;
 
 import java.util.ArrayList;
 
-public class SearchDenunciationActivity extends AppCompatActivity {
+public class SearchDenunciationActivity extends Activity {
 
     private ListView mDenunciations;
     private ListView mPriority;
@@ -27,7 +28,7 @@ public class SearchDenunciationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_denunciation);
 
-        mDenunciations = (ListView) findViewById(R.id.list_denunciations);
+        /**mDenunciations = (ListView) findViewById(R.id.list_denunciations);
         mPriority = (ListView) findViewById(R.id.list_priority);
 
         if (getIntent().hasExtra("session")) {
@@ -62,7 +63,7 @@ public class SearchDenunciationActivity extends AppCompatActivity {
                 intent.putExtra("denuncia", denuncias.get(position));
                 startActivity(intent);
             }
-        });
+        });**/
     }
 
     public String[] getListDenunciations(ArrayList<Denuncia> denuncias) {
@@ -90,12 +91,4 @@ public class SearchDenunciationActivity extends AppCompatActivity {
         }
     }
 
-    public String[] getPriority(ArrayList<Denuncia> denuncias) {
-        String[] newArray = new String[denuncias.size()];
-        for (int i = 0; i < denuncias.size(); i++) {
-            if (denuncias.get(i).isPrioridade())
-                newArray[i] = getType(denuncias.get(i).getTipo());
-        }
-        return newArray;
-    }
 }

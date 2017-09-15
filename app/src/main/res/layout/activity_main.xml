@@ -3,169 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkCyan"
+    android:background="@color/blue"
     android:orientation="vertical"
     tools:context="com.example.antiaedes.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/user_panel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-
-        <TextView
-            android:id="@+id/main_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/name_default"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-
-        <ImageView
-            android:id="@+id/ivCoin"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:src="@drawable/coin"
-            android:contentDescription="@string/image_error" />
-
-        <TextView
-            android:id="@+id/tvCoins"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_centerInParent="true"
-            android:layout_alignRight="@+id/ivCoin"
-            android:layout_alignEnd="@+id/ivCoin"
-            android:text="@string/money_default"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="@dimen/default_size"
-            android:background="@drawable/shape_edittext_default"
-            android:textColor="@color/black"
-            android:onClick="leave"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/quit"/>
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/main_denunciation"
-                android:onClick="denounce"
-                android:layout_width="@dimen/button_size"
-                android:layout_height="@dimen/button_size"
-                android:layout_margin="@dimen/main_margin"
-                android:src="@drawable/megaphone"
-                android:contentDescription="@string/image_error" />
-
-            <TextView
-                android:id="@+id/tvDenunciation"
-                android:layout_width="@dimen/button_size"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/main_denunciation"
-                android:layout_marginLeft="@dimen/main_margin"
-                android:layout_marginRight="@dimen/main_margin"
-                android:gravity="center"
-                android:text="@string/main_denunciation"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:src="@drawable/logo2"/>
 
-            <ImageView
-                android:id="@+id/main_maps"
-                android:onClick="openMaps"
-                android:layout_width="@dimen/button_size"
-                android:layout_height="@dimen/button_size"
-                android:layout_margin="@dimen/main_margin"
-                android:layout_toRightOf="@+id/main_denunciation"
-                android:layout_toEndOf="@+id/main_denunciation"
-                android:src="@drawable/maps"
-                android:contentDescription="@string/image_error" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="top"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="@dimen/button_size"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_maps"
-                android:layout_marginLeft="@dimen/main_margin"
-                android:layout_marginRight="@dimen/main_margin"
-                android:layout_toRightOf="@+id/main_denunciation"
-                android:layout_toEndOf="@+id/main_denunciation"
-                android:gravity="center"
-                android:text="@string/main_maps"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/main_denunciation"
+                    android:onClick="denounce"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#4ea4e9"
+                    android:layout_weight="0.33"
+                    android:src="@drawable/denunciar"
+                    android:contentDescription="@string/image_error"/>
+                <ImageView
+                    android:id="@+id/main_maps"
+                    android:onClick="openMaps"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:background="#4ea4e9"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:src="@drawable/mapa"
+                    android:contentDescription="@string/image_error" />
 
-            <ImageView
-                android:id="@+id/main_care"
-                android:layout_width="@dimen/button_size"
-                android:layout_height="@dimen/button_size"
-                android:layout_below="@+id/tvDenunciation"
-                android:layout_margin="@dimen/main_margin"
-                android:src="@drawable/watering"
-                android:onClick="openCare"
-                android:clickable="true"
-                android:contentDescription="@string/image_error" />
+                <ImageView
+                    android:id="@+id/main_care"
+                    android:onClick="openCare"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#4ea4e9"
+                    android:layout_weight="0.33"
+                    android:src="@drawable/cuidados"
+                    android:contentDescription="@string/image_error" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="@dimen/button_size"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_care"
-                android:layout_marginLeft="@dimen/main_margin"
-                android:layout_marginRight="@dimen/main_margin"
-                android:gravity="center"
-                android:text="@string/main_care"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/main_help"
-                android:layout_width="@dimen/button_size"
-                android:layout_height="@dimen/button_size"
-                android:layout_below="@+id/tvDenunciation"
-                android:layout_margin="@dimen/main_margin"
-                android:layout_toRightOf="@+id/main_care"
-                android:layout_toEndOf="@+id/main_care"
-                android:src="@drawable/website"
-                android:contentDescription="@string/image_error" />
-
-            <TextView
-                android:layout_width="@dimen/button_size"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_help"
-                android:layout_marginLeft="@dimen/main_margin"
-                android:layout_marginRight="@dimen/main_margin"
-                android:layout_toRightOf="@id/main_care"
-                android:layout_toEndOf="@+id/main_care"
-                android:gravity="center"
-                android:text="@string/go_site"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

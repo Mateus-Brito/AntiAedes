@@ -2,6 +2,7 @@ package com.example.antiaedes;
 
 import android.Manifest;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -44,7 +45,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class DenunciationActivity extends AppCompatActivity {
+public class DenunciationActivity extends Activity {
 
     private static final int CAMERA_REQUEST = 1888;
     private ImageView mCamera;
@@ -54,6 +55,7 @@ public class DenunciationActivity extends AppCompatActivity {
     private EditText mStreet;
     private EditText mCity;
     private EditText mReference;
+    private EditText mComplement;
     private EditText mDetails;
     private EditText num_house;
     private InputStream img;
@@ -83,11 +85,12 @@ public class DenunciationActivity extends AppCompatActivity {
                     1);
 
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        mComplement = (EditText) findViewById(R.id.denunciation_aditional);
         mCamera = (ImageView) findViewById(R.id.denunciation_camera);
         mSpinner = (Spinner) findViewById(R.id.denunciation_spinner);
         mCep = (EditText) findViewById(R.id.denunciation_cep);
@@ -141,9 +144,9 @@ public class DenunciationActivity extends AppCompatActivity {
 
     public void fillFields(Address address) {
         if (address != null) {
-            mCep.setText(address.getPostalCode());
+            mCep.setText(address.getPostalCode().replaceAll("[^0123456789]", ""));
             //mNeighborhood.setText(address.);
-            mStreet.setText(address.getAddressLine(0));
+            mStreet.setText(address.getAddressLine(0).replaceAll(",","").replaceAll("\\d", ""));
             mCity.setText(address.getLocality());
         } else return;
     }
@@ -216,12 +219,12 @@ public class DenunciationActivity extends AppCompatActivity {
         Calendar date = Calendar.getInstance();
         DenunciaDao denunciaDao = new DenunciaDao();
         Denuncia denuncia = new Denuncia();
-        denuncia.setCep(mCep.getText().toString());
+        denuncia.setCep(mCep.getText().toString().replaceAll("[^0123456789]", ""));
         if(mImage!=null)
             denuncia.setImagem(streamToString(img));
         denuncia.setTipo(mSpinner.getSelectedItemPosition());
         denuncia.setBairro(mNeighborhood.getText().toString());
-        denuncia.setNum_casa(Integer.parseInt(num_house.getText().toString()));
+        denuncia.setNum_casa(!num_house.getText().toString().isEmpty() ? Integer.parseInt(num_house.getText().toString()) : 0);
         denuncia.setRua(mStreet.getText().toString());
         denuncia.setReferencia(mReference.getText().toString());
         denuncia.setDescricao(mDetails.getText().toString());
@@ -231,25 +234,25 @@ public class DenunciationActivity extends AppCompatActivity {
         denuncia.setCodigo(10);
 
         if (mSession != null) {
-            if (!mSession.getCpf().isEmpty()) denuncia.setId_fun(mSession.getId());
+            if (mSession.getCpf() != null && mSession.getCpf()!=""/*isEmpty()**/) denuncia.setId_fun(mSession.getId());
             else denuncia.setId_user(mSession.getId());
         }
         if(denunciaDao.registerDenunciation(denuncia)){
             if(mSession!=null) {
                 if (mSession.getCpf() == null) {
                     Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra("denunciado", "Denunciado com sucesso!");
+                    intent.putExtra("denunciado", "Denúncia realizada!");
                     intent.putExtra("session",mSession);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(this, MainFunctionaryActivity.class);
-                    intent.putExtra("denunciado", "Denunciado com sucesso!");
+                    intent.putExtra("denunciado", "Denúncia realizada!");
                     intent.putExtra("session", mSession);
                     startActivity(intent);
                 }
             }else{
                 Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("denunciado", "Denunciado com sucesso!");
+                intent.putExtra("denunciado", "Denúncia realizada!");
                 startActivity(intent);
             }
             finish();

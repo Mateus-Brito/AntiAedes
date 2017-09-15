@@ -29,6 +29,7 @@ public class Session implements Serializable {
         this.nome = nome;
         this.email = email;
         this.saldo = saldo;
+        this.cpf="";
     }
 
     //

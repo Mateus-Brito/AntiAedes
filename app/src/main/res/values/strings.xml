@@ -53,7 +53,7 @@
     <!-- Strings related to Register_Visit -->
     <string name="visit_situation">Situação:</string>
     <string name="visit_observation">Faça Observações sobre a visita</string>
-    <string name="register_visit">Registrar Visita</string>
+    <string name="register_visit">Registrar</string>
     <string name="qrcode_error">QRCode Inválido!</string>
     <string name="qrcode_canceled">QRCode Cancelado!</string>
 
@@ -72,7 +72,8 @@
     <!-- Strings related Care -->
     <string name="next">Próximo</string>
     <string name="previous">Anterior</string>
-    <string name="care_water_box">Não deixa repositórios destampados, eles podem armazenar água, e exposta para o mosquito é um perigo para a saúde da população local.</string>
+    <string name="care_water_box">Não deixe repositórios destampados, eles podem armazenar água, e exposta para o mosquito é um perigo para a saúde da população local.</string>
     <string name="care_water_plants">Preencha os locais do jarro para evitar o acumulo de água.</string>
     <string name="care_water_wheel">A figura mostra mais uma forma de acumúlo de águ. Previna a aparição do mosquito cobrindo os pneus expostos.</string>
+    <string name="title_activity_see_observation">SeeObservationActivity</string>
 </resources>

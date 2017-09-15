@@ -17,13 +17,42 @@ import java.util.Vector;
 
 public class DenunciaDao{
 
-    private static final String URL = "http://192.168.0.4:8080/WSAntiAedes/services/DenunciaDao?wsdl";
+    private static final String URL = "http://jbossews-desenvolvendo.rhcloud.com/WSAntiAedes/services/DenunciaDao?wsdl";
     private static final String NAMESPACE = "http://dao.antiaedes.example.com";
     private static final String REGISTER_DENUNCIATION = "registerDenunciation";
     private static final String GET_DENUNCIATION = "getDenunciation";
     private static final String UPDATE_DENUNCIATION = "updateDenunciation";
     private static final String GET_ALL_DENUNCIATIONS = "getAllDenunciations";
     private static final String GET_ALL_DENUNCIATIONS_ACTIVE = "getDenunciationsActives";
+    private static final String GET_BY_ID = "buscarDenunciaPorId";
+
+    public Denuncia getDenunciaById(int id){
+        Denuncia dn;
+
+        SoapObject denunciation = new SoapObject(NAMESPACE, GET_BY_ID);
+        denunciation.addProperty("id", id);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(denunciation);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE httpTransportSE = new HttpTransportSE(URL);
+
+        try {
+            httpTransportSE.call("urn:" + GET_BY_ID, envelope);
+
+            if (envelope.getResponse() instanceof SoapObject) {
+                SoapObject response = (SoapObject) envelope.getResponse();
+                Denuncia d = Converter.getDenunciation(response);
+                return d;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public boolean registerDenunciation(Denuncia denuncia){
         SoapObject insert = new SoapObject(NAMESPACE, REGISTER_DENUNCIATION);

@@ -5,18 +5,21 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.LevelListDrawable;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,11 +71,15 @@ public class MapActivity extends FragmentActivity {
             if (mSession.getCpf() == null) {
                 details.setEnabled(false);
                 details.setVisibility(View.INVISIBLE);
+                //LinearLayout ln = (LinearLayout) findViewById(R.id.linearMap);
+                //ln.removeView(details);
             }
         } else {
             details.setEnabled(false);
             details.setVisibility(View.INVISIBLE);
-        }
+            //LinearLayout ln = (LinearLayout) findViewById(R.id.linearMap);
+            //ln.removeView(details);
+    }
 
 
         markers = new ArrayList<>();
@@ -130,11 +137,16 @@ public class MapActivity extends FragmentActivity {
                             }
                         }
                     }
-
                 }
             }
+            int height = 100;
+            int width = 100;
+            BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.icone_mosquito);
+            Bitmap b=bitmapdraw.getBitmap();
+            Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+            Bitmap bhalfsize=Bitmap.createScaledBitmap(b, b.getWidth()/2,b.getHeight()/2, false);
             for (InfoMarker infoMarker : markers) {
-                map.addMarker(new MarkerOptions().position(infoMarker.getLatLng()).title(infoMarker.getId() + ""));
+                map.addMarker(new MarkerOptions().position(infoMarker.getLatLng()).title(infoMarker.getId() + "").icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));//.icon(BitmapDescriptorFactory.fromResource(R.drawable.mosquito))
             }
         }
 
@@ -186,10 +198,10 @@ public class MapActivity extends FragmentActivity {
                 map.animateCamera(CameraUpdateFactory.newLatLng(arg0));
 
                 // Adding marker on the GoogleMap
-                Marker marker = map.addMarker(markerOptions);
+                //Marker marker = map.addMarker(markerOptions);
 
                 // Showing InfoWindow on the GoogleMap
-                marker.showInfoWindow();
+                //marker.showInfoWindow();
 
                 }
         });
@@ -243,13 +255,23 @@ public class MapActivity extends FragmentActivity {
     public InfoMarker searchMarker(int id) {
         if (markers != null) {
             for (InfoMarker info : markers) {
-                if (info.getId() == id)
+                if (info.getId() == id){
                     return info;
+                }
             }
         }
         return null;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     public static int getPixelsFromDp(Context context, float dp) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);

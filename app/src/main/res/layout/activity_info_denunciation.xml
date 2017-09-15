@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkCyan"
+    android:background="#0be3f7"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,35 +11,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.example.antiaedes.DenunciationActivity">
-    <GridLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alignmentMode="alignBounds"
-        android:background="@drawable/shape_button_default"
-        android:padding="10dp"
-        android:columnCount="2" >
+        android:padding="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/denImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="2"/>
         <!-- Tipo da Denuncia -->
+        <ImageView
+            android:id="@+id/den_image"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginBottom="@dimen/default_size"
+            android:src="@drawable/noimage" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:text="CEP: " />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="CEP " />
 
         <EditText
             android:id="@+id/denCep"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:editable="false"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:padding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginBottom="5dp"
-            android:background="@color/grey"
             android:inputType="none">
         </EditText>
 
@@ -48,15 +57,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:text="Bairro: " />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Bairro " />
 
         <EditText
             android:id="@+id/denBairro"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
             android:padding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:inputType="none">
         </EditText>
 
@@ -64,14 +78,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:text="Rua: " />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Rua " />
 
         <EditText
             android:id="@+id/denRua"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
             android:padding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:layout_marginBottom="5dp"
             android:inputType="none">
         </EditText>
@@ -80,31 +99,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:text="Cidade: " />
-
-        <EditText
-            android:id="@+id/denCidade"
-            android:layout_width="fill_parent"
-            android:padding="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_height="wrap_content"
-            android:background="@color/grey"
-            android:editable="false"
-            android:inputType="none"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="Referencias: " />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Referencias " />
 
         <EditText
             android:id="@+id/denReferencia"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:editable="false"
             android:padding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginBottom="5dp"
             android:inputType="none" />
 
@@ -112,7 +120,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:text="Detalhes: " />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Detalhes " />
 
         <EditText
             android:id="@+id/denDetalhes"
@@ -120,9 +130,31 @@
             android:padding="5dp"
             android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
             android:editable="false"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:inputType="none"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Observação " />
+
+        <EditText
+            android:id="@+id/denOBS"
+            android:layout_width="fill_parent"
+            android:padding="5dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btDen"
@@ -134,7 +166,8 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/shape_button_start"
             android:text="Solucionar"/>
-    </GridLayout>
+    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

@@ -17,7 +17,7 @@ import java.util.Vector;
 
 public class VisitaDao {
 
-    private static final String URL = "http://192.168.0.4:8080/WSAntiAedes/services/VisitaDao?wsdl";
+    private static final String URL = "http://jbossews-desenvolvendo.rhcloud.com/WSAntiAedes/services/VisitaDao?wsdl";
     private static final String NAMESPACE = "http://dao.antiaedes.example.com";
     private static final String REGISTER_VISIT = "registerVisit";
     private static final String REGISTER_VISIT2 = "registerVisit2";

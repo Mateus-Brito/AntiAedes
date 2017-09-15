@@ -1,6 +1,8 @@
 package com.example.antiaedes;
 
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by Mateus on 23/07/2016.
@@ -9,15 +11,18 @@ public class ItemListView
 {
     private String texto;
     private Drawable iconeRid;
+    private int id;
 
     public ItemListView()
     {
     }
 
-    public ItemListView(String texto, Drawable iconeRid)
+    public ItemListView(int id, String texto, Drawable iconeRid)
     {
+        this.id=id;
         this.texto = texto;
         this.iconeRid = iconeRid;
+
     }
 
     public Drawable getIconeRid()
@@ -40,4 +45,11 @@ public class ItemListView
         this.texto = texto;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

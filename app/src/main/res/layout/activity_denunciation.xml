@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkCyan"
+    android:background="#0be3f7"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -22,11 +22,11 @@
             <ImageView
                 android:id="@+id/denunciation_camera"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_marginBottom="@dimen/default_size"
                 android:clickable="true"
                 android:onClick="capturePhoto"
-                android:src="@drawable/camera" />
+                android:src="@drawable/camera_icon" />
 
             <Spinner
                 android:id="@+id/denunciation_spinner"
@@ -45,9 +45,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:background="@drawable/shape_edittext_default"
+                    android:background="@color/white"
                     android:textColorHint="@color/grey"
+                    android:ellipsize="end"
                     android:hint="@string/denunciation_cep"
+                    android:inputType="number"
+                    android:maxLines="1"
                     android:lines="1"
                     android:maxLength="9"
                     android:layout_marginBottom="@dimen/default_size"
@@ -57,6 +60,9 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_size"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
                     android:onClick="captureLocation"
                     android:text="@string/denunciation_take_place"/>
             </LinearLayout>
@@ -66,10 +72,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/grey"
-                android:background="@drawable/shape_edittext_default"
+                android:background="@color/white"
                 android:hint="@string/denunciation_neighborhood"
                 android:maxLength="30"
+                android:inputType="textPersonName"
+                android:maxLines="1"
                 android:lines="1"
+                android:ellipsize="end"
                 android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/default_size"
                 android:padding="@dimen/default_size" />
@@ -81,11 +90,30 @@
                 android:textColorHint="@color/grey"
                 android:padding="@dimen/default_size"
                 android:maxLength="180"
+                android:maxLines="1"
                 android:lines="1"
+                android:inputType="textPersonName"
+                android:ellipsize="end"
                 android:textColor="@color/black"
-                android:background="@drawable/shape_edittext_default"
+                android:background="@color/white"
                 android:layout_marginBottom="@dimen/default_size"
                 android:hint="@string/denunciation_street"/>
+
+            <EditText
+                android:id="@+id/denunciation_aditional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey"
+                android:padding="@dimen/default_size"
+                android:maxLength="180"
+                android:ellipsize="end"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:layout_marginBottom="@dimen/default_size"
+                android:hint="Complemento"/>
 
             <EditText
                 android:id="@+id/den_num_house"
@@ -94,10 +122,12 @@
                 android:textColorHint="@color/grey"
                 android:padding="@dimen/default_size"
                 android:maxLength="5"
+                android:ellipsize="end"
                 android:inputType="number"
+                android:maxLines="1"
                 android:lines="1"
                 android:textColor="@color/black"
-                android:background="@drawable/shape_edittext_default"
+                android:background="@color/white"
                 android:layout_marginBottom="@dimen/default_size"
                 android:hint="Número da Residencia"/>
 
@@ -105,10 +135,13 @@
                 android:id="@+id/denunciation_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_edittext_default"
+                android:background="@color/white"
                 android:hint="@string/denunciation_city"
+                android:ellipsize="end"
                 android:layout_marginBottom="@dimen/default_size"
                 android:maxLength="50"
+                android:inputType="textPersonName"
+                android:maxLines="1"
                 android:lines="1"
                 android:textColorHint="@color/grey"
                 android:textColor="@color/black"
@@ -120,10 +153,13 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_size"
                 android:maxLength="180"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:inputType="textPersonName"
                 android:lines="2"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
-                android:background="@drawable/shape_edittext_default"
+                android:background="@color/white"
                 android:layout_marginBottom="@dimen/default_size"
                 android:hint="@string/denunciation_reference"/>
 
@@ -132,11 +168,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_size"
+                android:ellipsize="end"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
-                android:background="@drawable/shape_edittext_default"
+                android:inputType="textPersonName"
+                android:background="@color/white"
                 android:layout_marginBottom="@dimen/default_size"
                 android:maxLength="180"
+                android:maxLines="3"
                 android:lines="3"
                 android:hint="@string/denunciation_observation"/>
 

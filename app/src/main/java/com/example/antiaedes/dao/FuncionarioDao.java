@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class FuncionarioDao {
 
-    private static final String URL = "http://192.168.0.4:8080/WSAntiAedes/services/FuncionarioDao?wsdl";
+    private static final String URL = "http://jbossews-desenvolvendo.rhcloud.com/WSAntiAedes/services/FuncionarioDao?wsdl";
     private static final String NAMESPACE = "http://dao.antiaedes.example.com";
     private final String SEARCH_FUN = "login";
 

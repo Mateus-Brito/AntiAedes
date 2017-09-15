@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkCyan"
+    android:background="@color/blue"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -25,8 +25,9 @@
                 android:layout_height="120dp"
                 android:layout_marginBottom="@dimen/default_size"
                 android:clickable="true"
+                android:layout_gravity="center"
                 android:onClick="readQRCode"
-                android:src="@drawable/static_qr_code_without_logo" />
+                android:src="@drawable/qrcode_button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,8 +48,8 @@
                     android:id="@+id/visit_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_size"
-                    android:background="@drawable/shape_edittext_default"></Spinner>
+                    android:padding="5dp"
+                    android:layout_marginBottom="@dimen/default_size"></Spinner>
             </LinearLayout>
 
             <EditText
@@ -56,6 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_size"
+                android:textColor="@color/black"
+                android:inputType="number"
                 android:background="@drawable/shape_edittext_default"
                 android:padding="@dimen/default_size"
                 android:hint="@string/denunciation_cep" />
@@ -64,7 +67,9 @@
                 android:id="@+id/visit_num_house"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/default_size"
+                android:inputType="number"
                 android:background="@drawable/shape_edittext_default"
                 android:padding="@dimen/default_size"
                 android:hint="@string/denunciation_number_house" />
@@ -75,6 +80,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_edittext_default"
                 android:hint="@string/denunciation_neighborhood"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/default_size"
                 android:padding="@dimen/default_size" />
 
@@ -83,6 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_size"
+                android:textColor="@color/black"
+                android:inputType="textPersonName"
                 android:background="@drawable/shape_edittext_default"
                 android:layout_marginBottom="@dimen/default_size"
                 android:hint="@string/denunciation_street"/>
@@ -94,6 +103,8 @@
                 android:layout_marginBottom="@dimen/default_size"
                 android:background="@drawable/shape_edittext_default"
                 android:lines="3"
+                android:textColor="@color/black"
+                android:inputType="textPersonName"
                 android:padding="@dimen/default_size"
                 android:hint="@string/visit_observation" />
 
@@ -103,7 +114,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_button_start"
                 android:hint="@string/register_visit" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

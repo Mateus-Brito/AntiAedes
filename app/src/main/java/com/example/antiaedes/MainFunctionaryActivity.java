@@ -1,20 +1,27 @@
 package com.example.antiaedes;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainFunctionaryActivity extends AppCompatActivity {
+public class MainFunctionaryActivity extends Activity {
 
+    private Menu menu;
     private Session mSession;
-    private TextView mName;
+    private MenuItem mName;
+    private MenuItem reputacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_functionary);
 
         if(getIntent().hasExtra("registrado"))
@@ -23,12 +30,20 @@ public class MainFunctionaryActivity extends AppCompatActivity {
         if(getIntent().hasExtra("denunciado"))
             Toast.makeText(this, "Denuncia realizada!",Toast.LENGTH_LONG).show();
 
-        mName = (TextView) findViewById(R.id.main_func_username);
-
-        if(getIntent().hasExtra("session")){
+        if(getIntent().hasExtra("session"))
             mSession = (Session) getIntent().getSerializableExtra("session");
-            mName.setText(mSession.getNome());
-        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        if(mSession!=null) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            MenuItem count = menu.findItem(R.id.menu_reputacao);
+            count.setTitle("");
+            return super.onCreateOptionsMenu(menu);
+        } else return false;
     }
 
     public void denounce(View view) {
@@ -65,6 +80,13 @@ public class MainFunctionaryActivity extends AppCompatActivity {
     public void openHistoricVisit(View view){
         Intent intent = new Intent(this, HistoricVisitActivity.class);
         if (mSession != null) intent.putExtra("session", mSession);
+        startActivity(intent);
+    }
+
+    public void onQuit(MenuItem  item){
+        Intent intent = new Intent(this, StartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
         startActivity(intent);
     }
 }

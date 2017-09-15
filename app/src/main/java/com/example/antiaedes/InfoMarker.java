@@ -34,6 +34,37 @@ public class InfoMarker implements Serializable {
         return number_denunciations;
     }
 
+    public ArrayList<Denuncia> getDenuciationsResolved(){
+        ArrayList<Denuncia> resolvedd = new ArrayList<Denuncia>();
+        for(Denuncia d : denunciations){
+            Teste:
+            for(Denuncia d2 : denunciationsR){
+                if(d.getId() == d2.getId()){
+                    resolvedd.add(d);
+                    break Teste;
+                }
+            }
+
+        }
+        return resolvedd;
+    }
+
+    public ArrayList<Denuncia> getDenuciationsPending(){
+        ArrayList<Denuncia> pending = new ArrayList<Denuncia>();
+        for(Denuncia d : denunciations) {
+            boolean teste = true;
+            for (Denuncia d2 : denunciationsR) {
+                if (d.getId() == d2.getId()) {
+                    teste = false;
+                }
+            }
+            if(teste){
+                pending.add(d);
+            }
+        }
+        return pending;
+    }
+
     public int getNumber_denunciations_resolved() {
         if (denunciationsR != null && denunciations != null) {
             for (Denuncia denunciation : denunciations) {

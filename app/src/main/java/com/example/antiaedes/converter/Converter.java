@@ -64,7 +64,6 @@ public class Converter {
         denun.addProperty("tipo", denuncia.getTipo());
         denun.addProperty("imagem", denuncia.getImagem());
         denun.addProperty("codigo", denuncia.getCodigo());
-        denun.addProperty("prioridade", denuncia.isPrioridade());
         denun.addProperty("id_user", denuncia.getId_user());
         denun.addProperty("id_fun", denuncia.getId_fun());
         return denun;
@@ -97,7 +96,6 @@ public class Converter {
             denuncia.setTipo(Integer.parseInt(response.getPrimitivePropertyAsString("tipo")));
             denuncia.setImagem(response.getPrimitivePropertyAsString("imagem"));
             denuncia.setCodigo(Integer.parseInt(response.getPrimitivePropertyAsString("codigo")));
-            denuncia.setPrioridade(Boolean.parseBoolean(response.getPrimitivePropertyAsString("prioridade")));
             denuncia.setId_fun(Integer.parseInt(response.getPrimitivePropertyAsString("id_fun")));
             denuncia.setId_user(Integer.parseInt(response.getPrimitivePropertyAsString("id_user")));
             return denuncia;
@@ -126,6 +124,7 @@ public class Converter {
             visit.setId_fun(Integer.parseInt(object.getPrimitivePropertyAsString("id_fun")));
             visit.setId_den(Integer.parseInt(object.getPrimitivePropertyAsString("id_den")));
             visit.setSituation(Integer.parseInt(object.getPrimitivePropertyAsString("situacao")));
+            visit.setObservacao(object.getPropertyAsString("observacao"));
             visit.setData(object.getPrimitivePropertyAsString("data"));
             visits.add(visit);
         }
@@ -138,7 +137,7 @@ public class Converter {
         visit.setId_fun(Integer.parseInt(object.getPrimitivePropertyAsString("id_fun")));
         visit.setId_den(Integer.parseInt(object.getPrimitivePropertyAsString("id_den")));
         visit.setSituation(Integer.parseInt(object.getPrimitivePropertyAsString("situacao")));
-        visit.setData(object.getPropertyAsString("date"));
+        visit.setData(object.getPrimitivePropertyAsString("data"));
         visits.add(visit);
 
         return visits;
@@ -159,9 +158,8 @@ public class Converter {
             denuncia.setLongitude(object.getPrimitivePropertyAsString("longitude"));
             denuncia.setData(object.getPrimitivePropertyAsString("data"));
             denuncia.setTipo(Integer.parseInt(object.getPrimitivePropertyAsString("tipo")));
-            denuncia.setImagem(object.getPrimitivePropertyAsString("imagem"));
+            //denuncia.setImagem(object.getPrimitivePropertyAsString("imagem"));
             denuncia.setCodigo(Integer.parseInt(object.getPrimitivePropertyAsString("codigo")));
-            denuncia.setPrioridade(Boolean.parseBoolean(object.getPrimitivePropertyAsString("prioridade")));
             denuncia.setId_fun(Integer.parseInt(object.getPrimitivePropertyAsString("id_fun")));
             denuncia.setId_user(Integer.parseInt(object.getPrimitivePropertyAsString("id_user")));
             denuncias.add(denuncia);

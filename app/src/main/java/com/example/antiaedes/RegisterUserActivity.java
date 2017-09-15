@@ -1,9 +1,9 @@
 package com.example.antiaedes;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class RegisterUserActivity extends AppCompatActivity {
+public class RegisterUserActivity extends Activity {
 
     private EditText mNameView;
     private EditText mEmailView;

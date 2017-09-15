@@ -1,11 +1,13 @@
 package com.example.antiaedes;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,13 +24,14 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegisterVisitActivity extends AppCompatActivity {
+public class RegisterVisitActivity extends Activity {
 
     private Spinner mSituation;
     private EditText mCep;
@@ -53,11 +56,16 @@ public class RegisterVisitActivity extends AppCompatActivity {
         if (getIntent().hasExtra("denunciation"))
             hasDenunciation = (Denuncia) getIntent().getSerializableExtra("denunciation");
 
+        if (android.os.Build.VERSION.SDK_INT > 8) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         mSituation = (Spinner) findViewById(R.id.visit_spinner);
         mCep = (EditText) findViewById(R.id.visit_cep);
         mNumHouse = (EditText) findViewById(R.id.visit_num_house);
         mNeighborhood = (EditText) findViewById(R.id.visit_neighborhood);
-        mStreet = (EditText) findViewById(R.id.denunciation_street);
+        mStreet = (EditText) findViewById(R.id.visit_street);
         mObservation = (EditText) findViewById(R.id.visit_observation);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -81,13 +89,13 @@ public class RegisterVisitActivity extends AppCompatActivity {
     }
 
     public void readQRCode(View view) {
-        IntentIntegrator scanIntegrator = new IntentIntegrator(this);
-        scanIntegrator.initiateScan();
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.initiateScan();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 try {
@@ -106,15 +114,14 @@ public class RegisterVisitActivity extends AppCompatActivity {
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(getBaseContext(), R.string.qrcode_canceled, Toast.LENGTH_LONG).show();
             }
-        }
     }
 
     public void fillFields(int situation, String cep, int num_house, String neighborhood, String street) {
-        mSituation.setId(situation);
-        mCep.setText(cep);
-        mNumHouse.setText(num_house);
-        mNeighborhood.setText(neighborhood);
-        mStreet.setText(street);
+        mSituation.setSelection(situation);
+        mCep.setText(cep+"");
+        mNumHouse.setText(num_house+"");
+        mNeighborhood.setText(neighborhood+"");
+        mStreet.setText(street+"");
     }
 
     public void registerVisit(View view) {
@@ -137,7 +144,8 @@ public class RegisterVisitActivity extends AppCompatActivity {
         denuncia.setLongitude(String.valueOf(gps.getLongitude()));
         denuncia.setDescricao(mObservation.getText().toString());
         denuncia.setId_fun(mSession.getId());
-        visitaDao.registerVisit2(visita, denuncia);
+        if (!visitaDao.registerVisit2(visita, denuncia))
+            Toast.makeText(view.getContext(), "Falha na conexão!", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainFunctionaryActivity.class);
         intent.putExtra("registrado","registrado");
         intent.putExtra("session",mSession);

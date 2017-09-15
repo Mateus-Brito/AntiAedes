@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class UsuarioDao {
 
-    private static final String URL = "http://192.168.0.4:8080/WSAntiAedes/services/UsuarioDao?wsdl";
+    private static final String URL = "http://jbossews-desenvolvendo.rhcloud.com/WSAntiAedes/services/UsuarioDao?wsdl";
     private static final String NAMESPACE = "http://dao.antiaedes.example.com";
     private static final String REGISTER_USER = "registerUser";
     private static final String SEARCH_USER = "searchUser";

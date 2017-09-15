@@ -3,8 +3,11 @@ package com.example.antiaedes;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -33,6 +36,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +56,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -72,11 +76,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private TextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private RadioButton mNormalRadio;
+    private RadioGroup mGroup;
+    private RadioButton mNormalRadio,radio1,radio2;
     private RadioButton mFunctionaryRadio;
 
     @Override
@@ -93,20 +98,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             StrictMode.setThreadPolicy(policy);
         }
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        radio1 = (RadioButton) findViewById(R.id.radioNormal);
+                radio2 = (RadioButton) findViewById(R.id.radioFunctionary);
+        mEmailView = (TextView) findViewById(R.id.email);
+        mGroup = (RadioGroup) findViewById(R.id.radioGP);
         //populateAutoComplete();
+        mGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                View radioButton = mGroup.findViewById(checkedId);
+                int index = mGroup.indexOfChild(radioButton);
+
+                switch (index) {
+                    case 0:
+                        radioButton.setBackgroundColor(Color.parseColor("#3CB371"));
+                        radio2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        break;
+                    case 1:
+                        radioButton.setBackgroundColor(Color.parseColor("#3CB371"));
+                        radio1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        break;
+                }
+
+        }
+    });
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -289,7 +307,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cursor.moveToNext();
         }
 
-        addEmailsToAutoComplete(emails);
     }
 
     @Override
@@ -310,15 +327,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void goToRegister(View view) {
         Intent intent = new Intent(this, RegisterUserActivity.class);
         startActivity(intent);
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
     }
 
     /**
@@ -402,6 +410,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 session.setId(mUsuario.getId());
                 session.setNome(mUsuario.getNome());
                 session.setEmail(mUsuario.getEmail());
+                session.setSaldo(mUsuario.getSaldo());
                 return session;
             } else {
                 session.setId(mFuncionario.getId());
