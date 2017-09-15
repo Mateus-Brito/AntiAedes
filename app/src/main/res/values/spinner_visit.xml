@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="visit_situation">
+        <item>Resolvido</item>
+        <item>Pendente</item>
+    </string-array>
+    <string-array name="denunciation_priority">
+        <item>Todas Denuncias</item>
+        <item>Alta Prioridade</item>
+        <item>Baixa Prioridade</item>
+    </string-array>
+</resources>

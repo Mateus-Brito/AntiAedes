@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkCyan"
+    android:orientation="vertical"
+    tools:context="com.example.antiaedes.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/main_func_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/name_default"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:background="@drawable/shape_edittext_default"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/default_size"
+            android:onClick="leave"
+            android:textColor="@color/black"
+            android:text="@string/quit"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <!-- Button Denunciation-->
+            <ImageView
+                android:id="@+id/main_denunciation"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_margin="@dimen/main_margin"
+                android:clickable="true"
+                android:onClick="denounce"
+                android:src="@drawable/megaphone"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:id="@+id/tvDenunciation"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_denunciation"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:gravity="center"
+                android:text="@string/main_denunciation"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Button Maps-->
+            <ImageView
+                android:id="@+id/main_maps"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_margin="@dimen/main_margin"
+                android:layout_toRightOf="@+id/main_denunciation"
+                android:layout_toEndOf="@+id/main_denunciation"
+                android:clickable="true"
+                android:onClick="openMaps"
+                android:src="@drawable/maps"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_maps"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_toRightOf="@+id/main_denunciation"
+                android:layout_toEndOf="@+id/main_denunciation"
+                android:gravity="center"
+                android:text="@string/main_maps"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Button Care-->
+            <ImageView
+                android:id="@+id/main_care"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_below="@+id/tvDenunciation"
+                android:layout_margin="@dimen/main_margin"
+                android:src="@drawable/watering"
+                android:clickable="true"
+                android:onClick="openCare"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:id="@+id/tvCare"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_care"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:gravity="center"
+                android:text="@string/main_care"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Button QRCODE-->
+            <ImageView
+                android:id="@+id/functionary_visit"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_below="@+id/tvDenunciation"
+                android:layout_margin="@dimen/main_margin"
+                android:layout_toRightOf="@+id/main_care"
+                android:layout_toEndOf="@+id/main_care"
+                android:onClick="openRegisterVisit"
+                android:src="@drawable/house"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:id="@+id/tvVisit"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/functionary_visit"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_toRightOf="@id/main_care"
+                android:layout_toEndOf="@+id/main_care"
+                android:gravity="center"
+                android:text="@string/functionary_visit"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Button Form -->
+            <ImageView
+                android:id="@+id/functionary_form"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_below="@+id/tvVisit"
+                android:layout_margin="@dimen/main_margin"
+                android:clickable="true"
+                android:onClick="openHistoricVisit"
+                android:src="@drawable/form"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/functionary_form"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:gravity="center"
+                android:text="@string/functionary_form"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Button Help -->
+            <ImageView
+                android:id="@+id/main_help"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_below="@+id/tvVisit"
+                android:layout_margin="@dimen/main_margin"
+                android:layout_toRightOf="@+id/main_care"
+                android:layout_toEndOf="@+id/main_care"
+                android:src="@drawable/website"
+                android:contentDescription="@string/image_error" />
+
+            <TextView
+                android:layout_width="@dimen/button_size"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_help"
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_toRightOf="@id/main_care"
+                android:layout_toEndOf="@+id/main_care"
+                android:gravity="center"
+                android:text="@string/go_site"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

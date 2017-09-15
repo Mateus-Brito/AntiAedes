@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types_of_denunciation">
+        <item>Suspeita de Foco</item>
+        <item>Foco Encontrado</item>
+    </string-array>
+</resources>

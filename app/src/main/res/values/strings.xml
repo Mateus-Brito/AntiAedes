@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">AntiAedes</string>
+    <string name="without_account">Continuar Anônimamente</string>
+    <string name="with_account">Efetuar Login</string>
+    <string name="title_activity_login">Login</string>
+
+    <!-- Strings related to start -->
+    <string name="toggle_turn_on">Normal</string>
+    <string name="toggle_turn_off">Funcionário</string>
+
+    <!-- Strings related to main screen -->
+    <string name="denunciation">Denunciar</string>
+    <string name="main_denunciation">Denunciar</string>
+    <string name="main_maps">Mapas</string>
+    <string name="main_care">Cuidados</string>
+    <string name="main_help">Ajuda</string>
+    <string name="name_default">Nome</string>
+    <string name="money_default">0</string>
+    <string name="quit">Sair</string>
+
+    <!-- Denunciation Neighborhood -->
+    <string name="denunciation_neighborhood">Bairro</string>
+    <string name="denunciation_street">Rua</string>
+    <string name="denunciation_observation">Detalhe características presentes no local.</string>
+    <string name="denunciation_reference">Ponto de referencia</string>
+    <string name="denunciation_cep">Cep</string>
+    <string name="denunciation_take_place">Pegar Local</string>
+    <string name="denunciation_number_house">N° da residencia</string>
+    <string name="denunciation_city">Cidade</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Login ou Registrar</string>
+    <string name="action_sign_in_short">Acessar</string>
+    <string name="error_invalid_email">Este endereço de Email é inválido</string>
+    <string name="error_invalid_password">Esta senha não é válida</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="error_field_required">Este campo é necessário</string>
+    <string name="permission_rationale">"Permissão de contatos são necessários para prestação de Email"</string>
+    <string name="login_user">Normal</string>
+    <string name="login_functionary">Funcionário</string>
+    <string name="login_type">Tipo da conta:</string>
+    <string name="new_account">Criar uma conta!</string>
+
+    <!-- Strings related to Register User -->
+    <string name="register_name">Nome</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Senha</string>
+    <string name="register_repeate_password">Confirmar Senha</string>
+    <string name="register">Registrar</string>
+
+    <!-- Strings related to Register_Visit -->
+    <string name="visit_situation">Situação:</string>
+    <string name="visit_observation">Faça Observações sobre a visita</string>
+    <string name="register_visit">Registrar Visita</string>
+    <string name="qrcode_error">QRCode Inválido!</string>
+    <string name="qrcode_canceled">QRCode Cancelado!</string>
+
+    <!-- Strings related to Functionary -->
+    <string name="functionary_visit">Registrar Visita</string>
+    <string name="functionary_form">Histórico Visita</string>
+
+    <!-- Global Strings -->
+    <string name="image_error">Erro ao carregar imagem</string>
+    <string name="error">Ocorreu um Erro!</string>
+    <string name="go_site">Site</string>
+
+    <!-- Stings related searchDenunciations -->
+    <string name="name_city">Nome da Cidade</string>
+
+    <!-- Strings related Care -->
+    <string name="next">Próximo</string>
+    <string name="previous">Anterior</string>
+    <string name="care_water_box">Não deixa repositórios destampados, eles podem armazenar água, e exposta para o mosquito é um perigo para a saúde da população local.</string>
+    <string name="care_water_plants">Preencha os locais do jarro para evitar o acumulo de água.</string>
+    <string name="care_water_wheel">A figura mostra mais uma forma de acumúlo de águ. Previna a aparição do mosquito cobrindo os pneus expostos.</string>
+</resources>
