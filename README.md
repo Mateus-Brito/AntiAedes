@@ -19,4 +19,4 @@ pelo agente de endemias.
 
 Para o desenvolvimento do projeto, foi necessário o uso de uma tecnologia que permitisse comunicação entre aplicações diferentes, dentre outros recursos, do protocolo HTTP, que possibilita a transferência de informações entre computadores e na internet.
 
-[Web Service AntiAedes](https://github.com/user/repo/blob/branch/other_file.md)
+[Web Service AntiAedes](https://github.com/Mateus-Brito/WS-AntiAedes)
